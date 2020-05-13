@@ -1,22 +1,50 @@
 {
-    "sqs":
-    [
+    "sqs": [
         {
-            "team1":
-            [
+            "team1": [
                 {
-                    "test_devops_makelaars": null
+                    "queue1": "test_devops_makelaars"
                 },
                 {
-                    "test_devops_makelaars_errors": null
+                    "queue2": "test_devops_makelaars_errors"
                 }
             ]
         },
         {
-            "team2":
-            [
+            "team2": [
                 {
-                    "test_devops_new_houses": null
+                    "queue1": "test_devops_new_houses"
+                },
+                {
+                    "queue2": "test_devops_new_houses_errors"
+                },
+                {
+                    "queue3": "test_devops_edited_houses"
+                },
+                {
+                    "queue4": "test_devops_edited_houses_errors"
+                },
+                {
+                    "queue5": "test_devops_removed_houses"
+                },
+                {
+                    "queue6": "test_devops_removed_houses_errors"
+                }
+            ]
+        },
+        {
+            "team3": [
+                {
+                    "queue1": "test_devops_stats_phone_clicks"
+                },
+                {
+                    "queue2": "test_devops_stats_phone_clicks_errors"
+                },
+                {
+                    "queue3": "test_devops_stats_facebook_clicks"
+                },
+                {
+                    "queue4": "test_devops_stats_facebook_clicks_erros"
                 }
             ]
         }
