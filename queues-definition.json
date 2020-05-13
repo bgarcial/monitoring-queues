@@ -1,0 +1,24 @@
+{
+    "sqs":
+    [
+        {
+            "team1":
+            [
+                {
+                    "test_devops_makelaars": null
+                },
+                {
+                    "test_devops_makelaars_errors": null
+                }
+            ]
+        },
+        {
+            "team2":
+            [
+                {
+                    "test_devops_new_houses": null
+                }
+            ]
+        }
+    ]
+}
