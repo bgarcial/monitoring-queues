@@ -8,17 +8,6 @@ logger = logging.getLogger(__name__)
 sqs = boto3.client('sqs')
 
 def create_queue(name, attributes=None):
-    """
-    Creates an Amazon SQS queue.
-
-    Usage is shown in usage_demo at the end of this module.
-
-    :param name: The name of the queue. This is part of the URL assigned to the queue.
-    :param attributes: The attributes of the queue, such as maximum message size or
-                       whether it's a FIFO queue.
-    :return: A Queue object that contains metadata about the queue and that can be used
-             to perform queue operations like sending and receiving messages.
-    """
     if not attributes:
         attributes = {}
     try:
