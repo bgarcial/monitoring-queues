@@ -1,0 +1,1 @@
+Creating and sending messages to amazon sqs queues 
