@@ -9,3 +9,8 @@ sqs:
      queue4: test_devops_edited_houses_errors
      queue5: test_devops_removed_houses
      queue6: test_devops_removed_houses_errors
+  team3:
+    queue1: test_devops_stats_phone_clicks
+    queue2: test_devops_stats_phone_clicks_errors
+    queue3: test_devops_stats_facebook_clicks
+    queue4: test_devops_stats_facebook_clicks_erros
