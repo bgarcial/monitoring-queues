@@ -1,6 +1,10 @@
 import boto3
 import logging
 from botocore.exceptions import ClientError
+import subprocess
+from subprocess import call
+# import time
+
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +39,15 @@ def creating_queues():
     )
     response = sqs.get_queue_url(QueueName=prefix + 'makelaars')
     print("Created the queue with URL:", response['QueueUrl'])
+    sqsid = boto3.resource('sqs')
+    queue = sqsid.get_queue_by_name(QueueName='test_devops_makelaars')
+    url = queue.url
+
+    print ("URL:", url)
+    print ("start sending messages")
+
+    rc = call("./send.sh")
+
 
     # Creating test_devops_makelaars_errors queue
     makelaars_errors_queue = create_queue(
@@ -47,6 +60,7 @@ def creating_queues():
     )
     response = sqs.get_queue_url(QueueName=prefix + 'makelaars_errors')
     print("Created the queue with URL:", response['QueueUrl'])
+    # subprocess.call("./send.sh", shell=True)
 
     # test_devops_new_houses
     new_houses_queue = create_queue(prefix + 'new_houses')
