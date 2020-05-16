@@ -7,6 +7,27 @@ metrics:
   aws_statistics: [Maximum]
 
 - aws_namespace: AWS/SQS
+  aws_metric_name: ApproximateNumberOfMessagesDelayed
+  aws_dimensions: [QueueName]
+  aws_statistics: [Maximum]
+
+- aws_namespace: AWS/SQS
+  aws_metric_name: ApproximateNumberOfMessagesNotVisible
+  aws_dimensions: [QueueName]
+  aws_statistics: [Maximum]
+
+- aws_namespace: AWS/SQS
+  aws_metric_name: ApproximateNumberOfMessagesVisible
+  aws_dimensions: [QueueName]
+  aws_statistics: [Sum]
+
+- aws_namespace: AWS/SQS
+  aws_metric_name: NumberOfEmptyReceives
+  aws_dimensions: [QueueName]
+  aws_statistics: [Sum]
+
+
+- aws_namespace: AWS/SQS
   aws_metric_name: NumberOfMessagesReceived
   aws_dimensions: [QueueName]
   aws_statistics: [Sum]
@@ -22,9 +43,10 @@ metrics:
   aws_statistics: [Sum]
 
 - aws_namespace: AWS/SQS
-  aws_metric_name: ApproximateNumberOfMessagesVisible
+  aws_metric_name: SentMessageSize
   aws_dimensions: [QueueName]
   aws_statistics: [Sum]
+
 
 - aws_namespace: AWS/ELB
   aws_metric_name: HealthyHostCount
