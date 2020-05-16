@@ -13,4 +13,4 @@ sqs:
     queue1: test_devops_stats_phone_clicks
     queue2: test_devops_stats_phone_clicks_errors
     queue3: test_devops_stats_facebook_clicks
-    queue4: test_devops_stats_facebook_clicks_erros
+    queue4: test_devops_stats_facebook_clicks_errors

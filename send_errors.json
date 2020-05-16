@@ -1,0 +1,56 @@
+[
+    {
+        "Id": "ErrorReport-0001-2020-05-16T140731Z",
+        "MessageBody": "Error report for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Status": {
+                "DataType": "Number",
+                "StringValue": "422"
+            },
+            "Message": {
+                "DataType": "String",
+                "StringValue": "Invalid Attribute"
+            },
+            "Type": {
+                "DataType": "String",
+                "StringValue": "Unprocessable Entity"
+            },
+            "Detail": {
+                "DataType": "String",
+                "StringValue": "House name must contain at least three characters."
+            },
+            "SourceView": {
+                "DataType": "String",
+                "StringValue": "/data/attributes/houseName"
+            }
+        }
+    },
+    {
+        "Id": "ErrorReport-0002-2020-05-16T140731Z",
+        "MessageBody": "Error report for account 0002 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Status": {
+                "DataType": "Number",
+                "StringValue": "400"
+            },
+            "Message": {
+                "DataType": "String",
+                "StringValue": "Invalid Attribute"
+            },
+            "Type": {
+                "DataType": "String",
+                "StringValue": "Bad Request"
+            },
+            "Detail": {
+                "DataType": "String",
+                "StringValue": "Incorrect Database credentials"
+            },
+            "SourceFunction": {
+                "DataType": "String",
+                "StringValue": "/data/attributes/connecting_db"
+            }
+        }
+    }
+]
