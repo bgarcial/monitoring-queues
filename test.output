@@ -1,0 +1,64 @@
+{
+    "Successful": [
+        {
+            "Id": "HousesForRent-Sale-0001-2020-05-16T140731Z",
+            "MessageId": "3fc960b7-a668-491c-81b2-943c789c248e",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0002-2020-05-16T140731Z",
+            "MessageId": "a35d21fd-5c83-4a2b-af89-16e37546daa2",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0003-2020-05-16T140731Z",
+            "MessageId": "8f24ec83-0132-4128-8d60-d0e75b13e580",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0004-2020-05-16T140731Z",
+            "MessageId": "cd6985ec-ab7b-4999-8f02-ce45b14a2c5d",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0005-2020-05-16T140731Z",
+            "MessageId": "e7b80745-549a-4aa8-95ef-188973cef157",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0006-2020-05-16T140731Z",
+            "MessageId": "d7d87232-32f8-4ff2-ba81-d6cd2802d8a4",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0007-2020-05-16T140731Z",
+            "MessageId": "008215fa-4852-4291-9546-5f85e359691a",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0008-2020-05-16T140731Z",
+            "MessageId": "2ddd2878-6699-4671-ba68-465d1a3964c4",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0009-2020-05-16T140731Z",
+            "MessageId": "c913c5c1-0ef2-4453-b678-a475e987183a",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        },
+        {
+            "Id": "HousesForRent-Sale-0010-2020-05-16T140731Z",
+            "MessageId": "b5d33dde-f7b9-43a3-a50e-1d822dd26ebc",
+            "MD5OfMessageBody": "623112f6114f74f38242d4f51e3b2a2e",
+            "MD5OfMessageAttributes": "ec47e1a69f992e67281770960deec913"
+        }
+    ]
+}

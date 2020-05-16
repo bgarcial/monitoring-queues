@@ -3,6 +3,7 @@ import logging
 from botocore.exceptions import ClientError
 import subprocess
 from subprocess import call
+import yaml
 # import time
 
 
@@ -28,47 +29,120 @@ def create_queue(name, attributes=None):
 
 def creating_queues():
     prefix = 'test_devops_'
+    file_name='./queues_definition-2.yml'
+    with open(file_name) as f:
+        doc = yaml.safe_load(f)
 
-    # Creating test_devops_makelaars queue
-    makelaars_queue = create_queue(
-        prefix + 'makelaars',
+    # ######################################
+    # Creating test_devops_makelaars queue #
+    # ######################################
+    queue1 = doc['sqs']['team1']['queue1']
+    queue1_queue = create_queue(
+        # prefix + 'makelaars',
+        queue1,
         {
-            'MaximumMessageSize': str(1024),
-            'ReceiveMessageWaitTimeSeconds': str(20)
+            'MaximumMessageSize': str(4096),
+            'ReceiveMessageWaitTimeSeconds': str(20),
+            'VisibilityTimeout': str(300),
         }
     )
-    response = sqs.get_queue_url(QueueName=prefix + 'makelaars')
-    print("Created the queue with URL:", response['QueueUrl'])
+    # response = sqs.get_queue_url(QueueName=prefix + 'makelaars')
+    response = sqs.get_queue_url(QueueName=queue1)
+    print('Name of the queue created: {}'.format(queue1))
+    print('URL: {}'.format(response['QueueUrl']))
     sqsid = boto3.resource('sqs')
-    queue = sqsid.get_queue_by_name(QueueName='test_devops_makelaars')
+    queue = sqsid.get_queue_by_name(QueueName=queue1)
+
     url = queue.url
+    print ("Sending messages to: {queue_name}".format(queue_name=queue1))
 
-    print ("URL:", url)
-    print ("start sending messages")
+    # sending messages to the queue
+    # rc = call("./send.sh")
+    call(["./send.sh", str(url)])
 
-    rc = call("./send.sh")
 
-
-    # Creating test_devops_makelaars_errors queue
-    makelaars_errors_queue = create_queue(
-        prefix + 'makelaars_errors',
+    # #############################################
+    # Creating test_devops_makelaars_errors queue #
+    # #############################################
+    queue2 = doc['sqs']['team1']['queue2']
+    queue2_queue = create_queue(
+        # prefix + 'makelaars_errors',
+        queue2,
         {
             'MaximumMessageSize': str(4096),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
     )
-    response = sqs.get_queue_url(QueueName=prefix + 'makelaars_errors')
-    print("Created the queue with URL:", response['QueueUrl'])
-    # subprocess.call("./send.sh", shell=True)
+    response = sqs.get_queue_url(QueueName=queue2)
+    print('Name of the queue created: {}'.format(queue2))
+    print('URL: {}'.format(response['QueueUrl']))
+    sqsid = boto3.resource('sqs')
+    queue = sqsid.get_queue_by_name(QueueName=queue2)
+    url = queue.url
+    print ("Sending messages to: {queue_name}".format(queue_name=queue2))
+    rc = call(["./send.sh", str(url)])
 
-    # test_devops_new_houses
-    new_houses_queue = create_queue(prefix + 'new_houses')
-    response = sqs.get_queue_url(QueueName=prefix + 'new_houses')
-    print("Created the queue with URL:", response['QueueUrl'])
 
-    # Creating test_devops_new_houses_errors queue
-    new_houses_errors_queue = create_queue(prefix + 'new_houses_errors')
-    response = sqs.get_queue_url(QueueName=prefix + 'new_houses_errors')
-    print("Created the queue with URL:", response['QueueUrl'])
-creating_queues()
+
+    # #############################################
+    # Creating test_devops_new_houses queue #
+    # #############################################
+    queue3 = doc['sqs']['team2']['queue1']
+    queue3_queue = create_queue(
+        # prefix + 'makelaars_errors',
+        queue3,
+        {
+            'MaximumMessageSize': str(4096),
+            'ReceiveMessageWaitTimeSeconds': str(10),
+            'VisibilityTimeout': str(300),
+        }
+    )
+    response = sqs.get_queue_url(QueueName=queue3)
+    print('Name of the queue created: {}'.format(queue3))
+    print('URL: {}'.format(response['QueueUrl']))
+    sqsid = boto3.resource('sqs')
+    queue = sqsid.get_queue_by_name(QueueName=queue3)
+    url = queue.url
+    print ("Sending messages to: {queue_name}".format(queue_name=queue3))
+    rc = call(["./send.sh", str(url)])
+
+
+    # #############################################
+    # Creating test_devops_new_houses_errors queue #
+    # #############################################
+    queue4 = doc['sqs']['team2']['queue2']
+    queue4_queue = create_queue(
+        # prefix + 'makelaars_errors',
+        queue4,
+        {
+            'MaximumMessageSize': str(4096),
+            'ReceiveMessageWaitTimeSeconds': str(10),
+            'VisibilityTimeout': str(300),
+        }
+    )
+    response = sqs.get_queue_url(QueueName=queue4)
+    print('Name of the queue created: {}'.format(queue4))
+    print('URL: {}'.format(response['QueueUrl']))
+    sqsid = boto3.resource('sqs')
+    queue = sqsid.get_queue_by_name(QueueName=queue4)
+    url = queue.url
+    print ("Sending messages to: {queue_name}".format(queue_name=queue4))
+    rc = call(["./send.sh", str(url)])
+
+
+def main():
+    go = input("""
+               By creating those queues and sending them messages
+               you should use your default AWS account credentials and
+               might incur charges on your account. \n
+               Do you want to continue (y/n)?""")
+    if go.lower() == 'y':
+        print("Starting to create and send messages to the queue.")
+        creating_queues()
+    else:
+        print("Good bye!")
+
+
+if __name__ == '__main__':
+    main()

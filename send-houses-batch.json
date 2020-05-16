@@ -1,0 +1,472 @@
+[
+    {
+        "Id": "HousesForRent-Sale-0001-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0002-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0003-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0004-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0005-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0006-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0007-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0008-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0009-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    },
+    {
+        "Id": "HousesForRent-Sale-0010-2020-05-16T140731Z",
+        "MessageBody": "Houses for rent for account 0001 on 2020-05-16 at 02:07:31 PM.",
+        "DelaySeconds": 10,
+        "MessageAttributes": {
+            "Description": {
+                "DataType": "String",
+                "StringValue": "Example House"
+            },
+            "City": {
+                "DataType": "String",
+                "StringValue": "Ede, Bennekom"
+            },
+            "Region": {
+                "DataType": "String",
+                "StringValue": "Gelderland Province"
+            },
+            "PostalCode": {
+                "DataType": "String",
+                "StringValue": "6721 JE"
+            },
+            "YearofConstruction": {
+                "DataType": "Number",
+                "StringValue": "1961"
+            },
+            "LivingArea": {
+                "DataType": "String",
+                "StringValue": "125 m²"
+            },
+            "NumberOfRooms": {
+                "DataType": "Number",
+                "StringValue": "5"
+            },
+            "PlotSize": {
+                "DataType": "String",
+                "StringValue": "430 m²"
+            },
+            "RentalPrice": {
+                "DataType": "String",
+                "StringValue": "€ 895 per month"
+            },
+            "Status": {
+                "DataType": "String",
+                "StringValue": "Available"
+            }
+        }
+    }
+]
