@@ -45,7 +45,7 @@ def test_devops_makelaars():
         # prefix + 'makelaars',
         queue1,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(20),
             'VisibilityTimeout': str(300),
         }
@@ -84,7 +84,7 @@ def test_devops_makelaars_errors():
         # prefix + 'makelaars_errors',
         queue2,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -118,7 +118,7 @@ def test_devops_new_houses():
         # prefix + 'makelaars_errors',
         queue3,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -150,7 +150,7 @@ def test_devops_new_houses_errors():
         # prefix + 'makelaars_errors',
         queue4,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -183,7 +183,7 @@ def test_devops_edited_houses():
         # prefix + 'makelaars_errors',
         queue5,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -248,7 +248,7 @@ def test_devops_removed_houses():
         # prefix + 'makelaars_errors',
         queue7,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -280,7 +280,7 @@ def test_devops_removed_houses_errors():
         # prefix + 'makelaars_errors',
         queue8,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -313,7 +313,7 @@ def test_devops_stats_phone_clicks():
         # prefix + 'makelaars_errors',
         queue9,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -345,7 +345,7 @@ def test_devops_stats_phone_clicks_errors():
         # prefix + 'makelaars_errors',
         queue10,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -378,7 +378,7 @@ def test_devops_stats_facebook_clicks():
         # prefix + 'makelaars_errors',
         queue11,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
@@ -410,7 +410,7 @@ def test_devops_stats_facebook_clicks_errors():
         # prefix + 'makelaars_errors',
         queue12,
         {
-            'MaximumMessageSize': str(4096),
+            'MaximumMessageSize': str(1024),
             'ReceiveMessageWaitTimeSeconds': str(10),
             'VisibilityTimeout': str(300),
         }
