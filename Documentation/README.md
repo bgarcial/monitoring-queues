@@ -148,8 +148,14 @@ already were created/deployed in order to anybody who wants to come across of th
     + Slack incoming webhooks [should be created](https://api.slack.com/messaging/webhooks) to post messages to `#team-1`, `#team-2` and `#team-3` channels
         + These webhooks will be used by the notification channels created in grafana in order to post messages to a specific channel team.
         + In my case I decided to create a webhook per error and standard queue queue
+            + This is not necessarily mandatory, I was checking from slack perspective why sometimes I experiencing some delay in the notifications
+            when grafana send the alert to slack. Later on during the process I will realise that also something important to evaluate here is [the way like grafana alerts works](https://grafana.com/docs/grafana/latest/alerting/create-alerts/#alert-rule-fields). I will reference that later on in at **#4 separate section.**
 
-        ![aws credentials](https://cldup.com/mEvHwQm0zE.png "aws credentials")
+            + Is good to point out that for instance all the error queues could use only one incoming webhook to post to `#team-1` channel and the same for the other channels, but I decided use a webhook per queue. Despite behind this kind of decisions could do exist non-functional requirementes or business decisions, do it or don't is a free decision.
+
+        ![slack incoming webhooks](https://cldup.com/mEvHwQm0zE.png "slack incoming webhooks")
+
+
 5.
 
 ---
@@ -174,3 +180,24 @@ According to the definition problem, there are the following error queues:
 - `test_devops_stats_phone_clicks_errors`: #team-3
 - `test_devops_stats_facebook_clicks_errors`: #team-3
 
+Let's walk through of the `test_devops_makelaars_errors` dashboard  error queue creation
+
+#### 4.1.2 Query section
+
+When you create a dashboard and you can defined queries to be performed from it.
+In this case I can select the Cloudwatch target because I imported  the AWS/SQS Cloudwatch  dashboard which allow me to
+see the metrics that cloudwatch_exporter collect from prometheus instance. Let's point out other parameters such as:
+
+- Region
+- Namespace
+- Metric Name
+- Stats -- sum beacues i want the total of messagess visibles
+- Dimension name of the queue, it has to do with the defined on the examples.yaml file here 
+
+
+![test_devops_makelaars_errors dashboard](https://cldup.com/GRgjmTORHm.png "test_devops_makelaars_errors dashboard")
+
+
+
+
+creating alerts https://grafana.com/docs/grafana/latest/alerting/create-alerts/#alert-rule-fields
