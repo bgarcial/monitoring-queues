@@ -178,6 +178,10 @@ According to the definition problem, there are the following error queues:
 - `test_devops_stats_phone_clicks_errors`: #team-3
 - `test_devops_stats_facebook_clicks_errors`: #team-3
 
+I created the **Error queues** dashboard for those queues (It has starred to be found easily and also has the `Use me` tag)
+
+![test_devops_makelaars_errors dashboard](https://cldup.com/AxcMOySdzQ.png "test_devops_makelaars_errors dashboard")
+
 Let's walk through of the `test_devops_makelaars_errors` dashboard  error queue creation
 
 #### 4.1.2 Query section
@@ -280,4 +284,70 @@ So once the alert rule is created you will see that alert rule will be reference
 You can see there other alert rules for the other error and standard non-error queues defined because their dashboards and alerts and notification channels already were created and those queues already have messages exceeding the thresholds defined (in the error queues case above 0 messages) and in the standard non-errors queues above 25 messages
 
 (I will reference the non-standard dashboard and the way of send messages to the queues from pythos script later on )
+
+---
+
+### 4.2. Standard non-error queues panel dashboards:
+
+According to the definition problem, there are the following Standard non-error queues:
+
+- `test_devops_makelaars`: #team-1
+- `test_devops_new_houses`: #team-2
+- `test_devops_edited_houses`: #team-2
+- `test_devops_removed_houses`: #team-2
+- `test_devops_stats_phone_clicks`: #team-3
+- `test_devops_stats_facebook_clicks`: #team-3
+
+I created the **Standard non-error queues** dashboard for those queues (It has starred to be found easily and also has the `Use me` tag)
+
+![dashboard](https://cldup.com/WhQo1We5_6.png "dashboard")
+
+Let's walk through of the `test_devops_new_houses` dashboard  queue creation
+
+![dashboard](https://cldup.com/c3ImhNNh8k.png "dashboard")
+
+- The query section is created in the same way as I mentioned before in the error queues dashboards.
+    - The same metric, namespace and `sum()` stats
+
+    ![dashboard](https://cldup.com/ZfJgUMSguk.png "dashboard")
+
+- **Alerting section**
+
+But here we have  a new alert condition rules.
+The requirements of the problem say:
+
+>Team 3 wants to be notified if there are more than 25 messages in standard non-error
+queues.
+
+So this alert will be implemented for all non-error queues, so in `test_devops_new_houses` it will be:
+
+- Look the condition defined: `WHEN sum() OF query(A,1m,now) IS ABOVE 25`
+It means that the rule will be checked when the messages are more than 25 from 1m ago up to now.
+
+![dashboard](https://cldup.com/XuVQuS0YlN.png "dashboard")
+
+For the other non-error queues the same rule should be (and it was) created in their own dashboards
+
+#### 4.2.1. A new requirement threshold is defined for `test_devops_new_houses` and `test_devops_makelaars`
+
+But there are more requirements:
+
+>Team 1 and team 2 want to be notified if there are more than 10 messages in
+`test_devops_new_houses` and `test_devops_makelaars queues`.
+
+So since this is about a new notification message, since the destination teams are differents and the threshold defined here is for different purposes I created two panel dashboards called:
++ `test_devops_new_houses_more_than_10_msgs`
++ `test_devops_makelaars_more_than_10_msgs `
+
+
+![dashboard](https://cldup.com/EW0lcXNiRF.png "dashboard")
+
+In both we have the same alert condition rule defined but with their respective notification channels and behind of tem their respective slack incoming webhooks
+
+
+
+![dashboard](https://cldup.com/MnK9Cv4TnV.png "dashboard")
+![dashboard](https://cldup.com/sSkHp5D3jm.png "dashboard")
+
+
 
