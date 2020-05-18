@@ -188,16 +188,87 @@ When you create a dashboard and you can defined queries to be performed from it.
 In this case I can select the Cloudwatch target because I imported  the AWS/SQS Cloudwatch  dashboard which allow me to
 see the metrics that cloudwatch_exporter collect from prometheus instance. Let's point out other parameters such as:
 
-- Region
-- Namespace
-- Metric Name
-- Stats -- sum beacues i want the total of messagess visibles
-- Dimension name of the queue, it has to do with the defined on the examples.yaml file here 
+- **Region**, the `eu-west-1` required.
+- **Namespace**. I have plenty of AWS namespace resources according to the scrapped ones defined [in the metrics yaml file](https://github.com/bgarcial/monitoring-queues/blob/master/cloudwatch/metrics/example.yml#L20) used by cloudwatch_exporter from prometheus.
+
+  Every namespace resource defined there will appear in this dropdown selection control. The `AWS/SQS` namespace is the selected here.
+- **Metric Name**: Remember the focus here is the `ApproximateNumberOfMessagesVisible`
+- **Stats**: `sum()`
+  Since the condition to be evaluated in the error queues is:
+  >All teams want to be notified if there are any errors in the error SQS (_error queues).
+
+  I decided to select `sum()` in order to get the total count of the messages which are visible on the queue and when that value exceed the
+  threshold defined (**number of messages visible above 0** - I will describe this condition later on), then trigger the notification to `#team-1`, `#team-2` and `#team-3` slack channels
+
+- **Dimension**. `QueueName` is the dimension selected.
+    - It has direct relation with the defined on the [examples.yaml](https://github.com/bgarcial/monitoring-queues/blob/master/cloudwatch/metrics/example.yml#L21) file.
+    - According to the [documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-available-cloudwatch-metrics.html):
+
+      >The only dimension that Amazon SQS sends to CloudWatch is QueueName. This means that all available statistics are filtered by QueueName.
 
 
 ![test_devops_makelaars_errors dashboard](https://cldup.com/GRgjmTORHm.png "test_devops_makelaars_errors dashboard")
 
+#### 4.1.3. Visualization section
+
+There are plenty of options to play around visualizations
+
+![test_devops_makelaars_errors dashboard](https://cldup.com/-1TzuhWPsO.png "test_devops_makelaars_errors dashboard")
+
+#### 4.1.4. General options
+Here is possible to name the dashboard, in this case `test_devops_makelaars_errors`
+
+![test_devops_makelaars_errors dashboard](https://cldup.com/Vq3lu_rUsm.png "test_devops_makelaars_errors dashboard")
+
+#### 4.1.5. Alert options
+Here the alert rule for the queue will be created. An alert has some important sections.
+
+- **Rule**: Here the rule is created
+    - **Evaluate every**: According to the [documentation](https://grafana.com/docs/grafana/latest/alerting/create-alerts/#alert-rule-fields) ...
+      >Specify how often the scheduler should evaluate the alert rule. This is referred to as the evaluation interval.
+    + **For**:
+      >Specify how long the query needs to violate the configured thresholds before the alert notification triggers.
+
+      Basically I am saying to grafana that check this rule every 1m during 1 minute.
+      If during this period the condition(s) immediately below referenced will be checked and if the threshold is exceed, the alert will be triggered.
+
+- **Conditions**: [The only parameter could be specified here](https://grafana.com/docs/grafana/latest/alerting/create-alerts/#conditions) is a condition based on  query defined at the **4.1.2 Query section**
+
+    I am telling to the rule, that the query A defined, should be executed for a time range from 1m ago to now
+and if the messages are above `0` the alerting will be triggered.
+
+    I am defining in the condition `IS ABOVE 0` since all teams want to be notified if there any errors in the error SQS. This means at least if 1 message arrive to those queues.
 
 
+![test_devops_makelaars_errors dashboard](https://cldup.com/IgJhD1Nqzl.png "test_devops_makelaars_errors dashboard")
 
-creating alerts https://grafana.com/docs/grafana/latest/alerting/create-alerts/#alert-rule-fields
+- **No data and error handling section**
+I am telling to the rule, keep the alert when there are errors on the queue or data are not found.
+Normally due to the queue nature, always should there were data in them (?)
+
+- **Notifications section**
+    - **Send to**: Will be necessary to create first notification channels in order to have them available and select them here
+    As we can see the `msg_makelaars_errors-to-team1`, `msg_makelaars_errors-to-team2` and `msg_makelaars_errors-to-team3` slack notification channels were used here. What does it means?
+    Since `#team-1`, `#team-2` and `#team-3` channels should be notified when a message is visible on the queue  errors, and since one slack notification channel only can POST messages to one slack channel, then three slack notifications channels were created on grafana on this way:
+
+    The `msg_makelaars_errors-to-team1` notification channel post messages to `#team-1` slack channel by making use of one of the incoming webhooks created previously at the [**3. Some important things I assume already created**](https://github.com/bgarcial/monitoring-queues/tree/master/Documentation#3-some-important-things-i-assume-are-already-created) section
+
+    ![test_devops_makelaars_errors channel](https://cldup.com/NkC0YapYAK.png "test_devops_makelaars_errors channel")
+
+    The incoming url webhook selected here only post messages to `#team-1` slack channel.
+
+    So in the same way, the `msg_makelaars_errors-to-team2` notification channel post messages to `#team-2`
+
+    ![test_devops_makelaars_errors channel](https://cldup.com/PJMgp-LQG6.png "test_devops_makelaars_errors channel")
+
+    And the same case for the `msg_makelaars_errors-to-team3` notification channel. Its only will post messages to `#team-3` slack channel
+
+    ![test_devops_makelaars_errors channel](https://cldup.com/paOi1EKWYQ.png "test_devops_makelaars_errors channel")
+
+    The Username field is the username assigned to the slack application created which is interacting with the channels to send the messages.
+    The string at the Mention users field is the user id of the user I want to notify when the alert is triggered.
+
+    Once these notification channels are created, those can be selected at the **Send To** section, and I can also customize the alert message.
+
+
+    ![test_devops_makelaars_errors channel](https://cldup.com/OPpcfR3WqG.png "test_devops_makelaars_errors channel")
