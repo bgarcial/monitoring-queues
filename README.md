@@ -19,7 +19,7 @@ specified. So that we can be alerted whenever something goes wrong with the queu
 
 # Architecture approach defined.
 
-![SQS Architecture approach](https://cldup.com/x3Lkb9b9Us.jpg "SQS Architecture approach")
+![SQS Architecture approach](https://cldup.com/DvYWe9gPRs.jpg "SQS Architecture approach")
 
 You can find what is this solution about at the [Documentation section](https://github.com/bgarcial/monitoring-queues/tree/master/Documentation)
 

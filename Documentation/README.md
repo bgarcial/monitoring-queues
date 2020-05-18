@@ -279,6 +279,9 @@ So once the alert rule is created you will see that alert rule will be reference
 
 ![alert rules](https://cldup.com/aJi5FkPd_D.png "alert rules")
 
+Is necessary do the same previous steps for the other `_error_queues` since all teams should receive notification when at least 1 message arrive to those queues.
+
+
 **NOTE**:
 
 You can see there other alert rules for the other error and standard non-error queues defined because their dashboards and alerts and notification channels already were created and those queues already have messages exceeding the thresholds defined (in the error queues case above 0 messages) and in the standard non-errors queues above 25 messages
@@ -347,7 +350,32 @@ In both we have the same alert condition rule defined but with their respective 
 
 
 ![dashboard](https://cldup.com/MnK9Cv4TnV.png "dashboard")
+
 ![dashboard](https://cldup.com/sSkHp5D3jm.png "dashboard")
 
 
+---
 
+## 5. Using the solution approach
+
+Until now, is opportune to highlight these workflow has been implemented by applying all the previous described activities.
+
+![SQS Architecture approach](https://cldup.com/DvYWe9gPRs.jpg "SQS Architecture approach")
+
+But ... how this workflow works?
+Well, let's remember I mentioned the python script is the producer of the queues and the messages sent to them. So the workflow is the following:
+
+- The names of the queues are defined [in the yaml file](https://github.com/bgarcial/monitoring-queues/blob/master/queues_definition-2.yml)
++ Python script take every name and create que queues.
++ From python script the user or producer process has the possibility to send messages to the queue by accepting or rejecting the queue which I want to send it messages.
+- Then the messages arrive to every queue selected in the previous process.
+- Then Prometheus server via cloudwatch scrapper collect some SQS metrics.
+    - Rememeber, tThe focus of the collection and monitoring will be the `ApproximateNumberOfMessagesVisible` aws metric in all the queues defined.
+        - It is since this approach solution is only receiving messages in the queues mentioned from an external script, therefore either processors or consumers entities for the queue's messages were not involved here in this solution, so there are not presenting other situations in order to involve other metrics here.
+- Grafana import Prometheus data by applying the prometheus datasource and the AWS/SQS  dashboard
+- Then Grafana visualize the `ApproximateNumberOfMessagesVisible` aws metric for every queue defined (as I described along this documentation)
+- Then Grafana applies some queries according to the thresholds requirements defined in order to decide if issue notifications alerts to the respective teams.
+- If notifications are triggered, then those will be sent to `#team-1`, `#team-2` and `#team-3` slack channels
+- Then the respective teams will be aware about if some threshold was exceeded.
+
+### 5.1.
