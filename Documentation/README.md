@@ -156,8 +156,6 @@ already were created/deployed in order to anybody who wants to come across of th
         ![slack incoming webhooks](https://cldup.com/mEvHwQm0zE.png "slack incoming webhooks")
 
 
-5.
-
 ---
 
 ## 4. About Alerts, notification channels and error and standard queues dashboard in Grafana
@@ -272,3 +270,14 @@ Normally due to the queue nature, always should there were data in them (?)
 
 
     ![test_devops_makelaars_errors channel](https://cldup.com/OPpcfR3WqG.png "test_devops_makelaars_errors channel")
+
+So once the alert rule is created you will see that alert rule will be referenced here:
+
+![alert rules](https://cldup.com/aJi5FkPd_D.png "alert rules")
+
+**NOTE**:
+
+You can see there other alert rules for the other error and standard non-error queues defined because their dashboards and alerts and notification channels already were created and those queues already have messages exceeding the thresholds defined (in the error queues case above 0 messages) and in the standard non-errors queues above 25 messages
+
+(I will reference the non-standard dashboard and the way of send messages to the queues from pythos script later on )
+
