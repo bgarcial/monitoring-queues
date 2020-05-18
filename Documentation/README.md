@@ -110,8 +110,39 @@ So according to all previously described, this is the workflow that I implemente
 eu-west-1 Europe (Ireland) region.
 
 
-![SQS Architecture approach](https://cldup.com/8SEXKmqXVR.jpg "SQS Architecture approach")
+![SQS Architecture approach](https://cldup.com/DvYWe9gPRs.jpg "SQS Architecture approach")
 
+---
 
+## 3. Some important things I assume are already created
 
+As a starting point, in order to make effective the checking of this solution, I will assume that the following activities
+already were created/deployed in order to anybody who wants to come across of the solution, can focus on the collection metrics, monitoring and alerting activities since those activities are the essentials of this approach.
+
+1. Amazon EC2 instance is already created.
+    + A security group should be associated to it, in order to expose the following services/ports
+        + SSH
+        + 3300 to be used by grafana
+        + 80 standard http traffic since prometheus is exposed by nginx
+        + 9090 for prometheus metrics (it is not necessary)
+        + 9106 to be used by cloudwatcher prometheus scrapper
+        + 9100 is used by the `node_exporter` prometheus scrapper
+            + It brings host level metrics (cpu, disk, system load, network traffic, etc) about machine where prometheus is. (It is not necessary)
+            + You can check the endpoint [here](http://monitoring.bgarcial.me:9100/metrics)
+            + Do you remember Prometheus datasource was imported on grafana right? so [you can check node exporter metrics here in grafana dashboard](http://monitoring.bgarcial.me:3000/d/ZpqaY0JWk/node-exporter-for-prometheus-dashboard-english-compatibility-version)
+2. Prometheus was installed on EC2 instance
+    + [cloudwatcher](https://github.com/prometheus/cloudwatch_exporter) scrapper was configured on `/etc/prometheus/prometheus.yml`
+        + [cloudwatcher http endpoint is running](https://github.com/prometheus/cloudwatch_exporter#building-and-running) by using `9106` port. You can check the metrics scrapped here in the endpoint http://monitoring.bgarcial.me:9106/metrics which perform requests AWS/SQS cloudwatch metrics
+    + Installed nginx and adding basic HTTP authentication to prometheus.
+3. Grafana service application was installed on EC2 Instance
+    + [AWS/SQS dashboard](https://grafana.com/grafana/dashboards/584) was imported in grafana
+    + [Prometheus datasource](https://prometheus.io/docs/visualization/grafana/) was imported on grafana
+    + Error queues and standard queues dashboard and alert rules and notification channels should be created in grafana.
+        + Since these actions constitute the focus of the solution will get into them later on in at #4 separate section.
+
+---
+
+## 4. About Alerts, notification channels and error and standard queues dashbard in Grafana
+
+If someone wants to check the behavior of the solution,
 
