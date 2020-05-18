@@ -133,16 +133,44 @@ already were created/deployed in order to anybody who wants to come across of th
 2. Prometheus was installed on EC2 instance
     + [cloudwatcher](https://github.com/prometheus/cloudwatch_exporter) scrapper was configured on `/etc/prometheus/prometheus.yml`
         + [cloudwatcher http endpoint is running](https://github.com/prometheus/cloudwatch_exporter#building-and-running) by using `9106` port. You can check the metrics scrapped here in the endpoint http://monitoring.bgarcial.me:9106/metrics which perform requests AWS/SQS cloudwatch metrics
+            + To do that, `aws cli` and `aws credentials` [should be configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) inside the ec2 instance where cloudwatcher will be running in order to contact the SQS metrics to be scrapped.
+            The result should be something like this:
+
+            ![aws credentials](https://cldup.com/2Zkt9xqlHz.png "aws credentials")
     + Installed nginx and adding basic HTTP authentication to prometheus.
 3. Grafana service application was installed on EC2 Instance
     + [AWS/SQS dashboard](https://grafana.com/grafana/dashboards/584) was imported in grafana
     + [Prometheus datasource](https://prometheus.io/docs/visualization/grafana/) was imported on grafana
     + Error queues and standard queues dashboard and alert rules and notification channels should be created in grafana.
-        + Since these actions constitute the focus of the solution will get into them later on in at #4 separate section.
+        + Since these actions constitute the focus of the solution will get into them later on in at **#4 separate section.**
+4. Slack workspace [should be created](https://slack.com/intl/en-nl/help/articles/206845317-Create-a-Slack-workspace).
+    + `#team-1`, `#team-2` and `#team-3` channels should be created inside workspace.
+    + Slack incoming webhooks [should be created](https://api.slack.com/messaging/webhooks) to post messages to `#team-1`, `#team-2` and `#team-3` channels
+        + These webhooks will be used by the notification channels created in grafana in order to post messages to a specific channel team.
+        + In my case I decided to create a webhook per error and standard queue queue
+
+        ![aws credentials](https://cldup.com/mEvHwQm0zE.png "aws credentials")
+5.
 
 ---
 
-## 4. About Alerts, notification channels and error and standard queues dashbard in Grafana
+## 4. About Alerts, notification channels and error and standard queues dashboard in Grafana
 
-If someone wants to check the behavior of the solution,
+If someone wants to check the behavior of the solution, there are some important facts to keep in mind about how grafana
+is reading the metrics and sending alerts notification when defined thresholds are exceeded.
+
+Since one of the general requirements of the problem says:
+>A monitor per queue needs to be created
+
+Therefore, I created a panel dashboard for error queues and standard non-errors queues.
+
+### 4.1. Error queues panel dashboards:
+
+According to the definition problem, there are the following error queues:
+- `test_devops_makelaars_errors`: #team-1
+- `test_devops_new_houses_errors`: #team-2
+- `test_devops_edited_houses_errors`: #team-2
+- `test_devops_removed_houses_errors`: #team-2
+- `test_devops_stats_phone_clicks_errors`: #team-3
+- `test_devops_stats_facebook_clicks_errors`: #team-3
 
