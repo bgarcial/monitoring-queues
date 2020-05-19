@@ -363,6 +363,7 @@ Until now, is opportune to highlight these workflow has been implemented by appl
 ![SQS Architecture approach](https://cldup.com/DvYWe9gPRs.jpg "SQS Architecture approach")
 
 But ... how this workflow works?
+
 Well, let's remember I mentioned the python script is the producer of the queues and the messages sent to them. So the workflow is the following:
 
 - The names of the queues are defined [in the yaml file](https://github.com/bgarcial/monitoring-queues/blob/master/queues_definition-2.yml)
@@ -378,4 +379,190 @@ Well, let's remember I mentioned the python script is the producer of the queues
 - If notifications are triggered, then those will be sent to `#team-1`, `#team-2` and `#team-3` slack channels
 - Then the respective teams will be aware about if some threshold was exceeded.
 
-### 5.1.
+### 5.1. Executing python script queue and messages producer
+
+- The python script interact directly with AWS SQS API by using the AWS SDK.
+- By executing the script all the queues required in the problem definition will be created automatically.
+    - Along that way, this script allow to the user decide to which queues wants to send messages, by getting
+    the `(y/n)` input user from the keyboard. It will ask you to send messages to all the error and standard queues created in the previous step.
+
+So, let's see this process:
+
+#### 5.1.2. Creating python virtual environment
+
+- You can create a python virtual env via [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) or what ever alternative you want to use.
++ Once you've created the virtual environment upgrade pip package manager. `pip install --upgrade pip`
+- Clone the `monitoring_queues` [repository](https://github.com/bgarcial/monitoring-queues)
++ Place yourself at the root directory `/monitoring-queues`
+- There is a `requirements.txt` [file inside the project repository](https://github.com/bgarcial/monitoring-queues/blob/master/requirements.txt). It is used to install the packages dependencies for the script.
+- Please execute `pip install -r requirements.txt` so the `boto3` (python aws sdk) and `pyyaml` libraries  will be installed.
+
+#### 5.1.3. Configure aws credentials in your workstation.
+
+Keep in mind create a special IAM user identity and not use the AWS root account.
+
+To do that, `aws cli` and `aws credentials` [should be configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
+
+The result should be something like this:
+
+![aws credentials](https://cldup.com/qucCuLqQK1.png "aws credentials")
+
+#### 5.1.4. Executing the `queue-workflow.py` script
+
+As I mentioned this script only will create the queues and eventually send messages to them if the user decide to do it.
+So it is not performing the complete workflow described in the above diagram.
+
+---
+**IMPORTANT NOTES TO HIGHLIGHT**
+
+- Creating the monitoring and alerts from the script.
+
+Something I wish I had the time to do is create the monitoring process created by hand in grafana, from this script.
+In that sense think about check  libraries like [grafana-api](https://pypi.org/project/grafana-api/) or [the official http api reference](https://grafana.com/docs/grafana/latest/http_api/) will bring ideas to pursue that.
+
+- The python code is not following DRY principles, since the queues creation is performed by using a function for each of the 12 queues.
+This is not optimal. I would like to create probably a class and separate the creation and sending messages process in different methods so the queues and the messages could be addressed by objects instances of the class and probably passing the name of the queues as a parameters to the methods.
+Just an idea, probably there are better recommendations about write better code than that.
+
+---
+
+So let's continue with the script execution ...
+
+When you execute `python queue-workflow.py` you will be asked about to accept the send messages process
+So far just let it create the queues without send messages to any of them:
+
+![python script](https://cldup.com/WKanPGx5Ch.png "python script")
+
+
+- So apply `(y/n)n` to every question about send messages to the error and standard queues. In this output you will see how:
+
+```
+python queue-workflow.py                                                
+
+               By creating those queues and sending them messages
+               you should use your default AWS account credentials and
+               might incur charges on your account.
+
+               Do you want to continue (y/n)?y
+Starting to create all queues and send messages to them.
+
+    # ######################################
+    # Creating test_devops_makelaars queue #
+    # ######################################
+
+Name of the queue created: test_devops_makelaars
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_makelaars
+
+               Do you want to send messages to test_devops_makelaars (y/n)?n
+Please continue with other queues. Good bye!
+
+    # #############################################
+    # Creating test_devops_makelaars_errors queue #
+    # #############################################
+
+Name of the queue created: test_devops_makelaars_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_makelaars_errors
+
+               Do you want to send messages to test_devops_makelaars_errors (y/n)?n
+Please continue with other queues. Good bye!
+
+    # #######################################
+    # Creating test_devops_new_houses queue #
+    # #######################################
+
+Name of the queue created: test_devops_new_houses
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_new_houses
+
+               Do you want to send messages to test_devops_new_houses (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ##############################################
+    # Creating test_devops_new_houses_errors queue #
+    # ##############################################
+
+Name of the queue created: test_devops_new_houses_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_new_houses_errors
+
+               Do you want to send messages to test_devops_new_houses_errors (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ##########################################
+    # Creating test_devops_edited_houses queue #
+    # ##########################################
+
+Name of the queue created: test_devops_edited_houses
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_edited_houses
+
+               Do you want to send messages to test_devops_edited_houses (y/n)?n
+Please continue with other queues. Good bye!
+
+    # #################################################
+    # Creating test_devops_edited_houses_errors queue #
+    # #################################################
+
+Name of the queue created: test_devops_edited_houses_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_edited_houses_errors
+
+               Do you want to send messages to test_devops_edited_houses_errors (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ###########################################
+    # Creating test_devops_removed_houses queue #
+    # ###########################################
+
+Name of the queue created: test_devops_removed_houses
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_removed_houses
+
+               Do you want to send messages to test_devops_removed_houses (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ##################################################
+    # Creating test_devops_removed_houses_errors queue #
+    # ##################################################
+
+Name of the queue created: test_devops_removed_houses_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_removed_houses_errors
+
+               Do you want to send messages to test_devops_removed_houses_errors (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ###############################################
+    # Creating test_devops_stats_phone_clicks queue #
+    # ###############################################
+
+Name of the queue created: test_devops_stats_phone_clicks
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_phone_clicks
+
+               Do you want to send messages to test_devops_stats_phone_clicks (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ######################################################
+    # Creating test_devops_stats_phone_clicks_errors queue #
+    # ######################################################
+
+Name of the queue created: test_devops_stats_phone_clicks_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_phone_clicks_errors
+
+               Do you want to send messages to test_devops_stats_phone_clicks_errors (y/n)?n
+Please continue with other queues. Good bye!
+
+    # ##################################################
+    # Creating test_devops_stats_facebook_clicks queue #
+    # ##################################################
+
+Name of the queue created: test_devops_stats_facebook_clicks
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_facebook_clicks
+
+               Do you want to send messages to test_devops_stats_facebook_clicks (y/n)?n
+Please continue with other queues. Good bye!
+
+    # #########################################################
+    # Creating test_devops_stats_facebook_clicks_errors queue #
+    # #########################################################
+
+Name of the queue created: test_devops_stats_facebook_clicks_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_facebook_clicks_errors
+
+               Do you want to send messages to test_devops_stats_facebook_clicks_errors (y/n)?n
+We've finished. Good bye!
+```
