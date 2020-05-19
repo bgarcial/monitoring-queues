@@ -431,13 +431,13 @@ So let's continue with the script execution ...
 When you execute `python queue-workflow.py` you will be asked about to accept the send messages process
 So far just let it create the queues without send messages to any of them:
 
-![python script](https://cldup.com/WKanPGx5Ch.png "python script")
+![python script](https://cldup.com/halJ1Obexe.png "python script")
 
 
 - So apply `(y/n)n` to every question about send messages to the error and standard queues. In this output you will see how:
 
 ```
-python queue-workflow.py                                                
+python queue-workflow.py
 
                By creating those queues and sending them messages
                you should use your default AWS account credentials and
@@ -451,7 +451,7 @@ Starting to create all queues and send messages to them.
     # ######################################
 
 Name of the queue created: test_devops_makelaars
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_makelaars
+URL: https://eu-west-1.queue.amazonaws.com/xxxxxxx/test_devops_makelaars
 
                Do you want to send messages to test_devops_makelaars (y/n)?n
 Please continue with other queues. Good bye!
@@ -461,7 +461,7 @@ Please continue with other queues. Good bye!
     # #############################################
 
 Name of the queue created: test_devops_makelaars_errors
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_makelaars_errors
+URL: https://eu-west-1.queue.amazonaws.com/xxxx/test_devops_makelaars_errors
 
                Do you want to send messages to test_devops_makelaars_errors (y/n)?n
 Please continue with other queues. Good bye!
@@ -471,7 +471,7 @@ Please continue with other queues. Good bye!
     # #######################################
 
 Name of the queue created: test_devops_new_houses
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_new_houses
+URL: https://eu-west-1.queue.amazonaws.com/xxxx/test_devops_new_houses
 
                Do you want to send messages to test_devops_new_houses (y/n)?n
 Please continue with other queues. Good bye!
@@ -481,7 +481,7 @@ Please continue with other queues. Good bye!
     # ##############################################
 
 Name of the queue created: test_devops_new_houses_errors
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_new_houses_errors
+URL: https://eu-west-1.queue.amazonaws.com/xxxxx/test_devops_new_houses_errors
 
                Do you want to send messages to test_devops_new_houses_errors (y/n)?n
 Please continue with other queues. Good bye!
@@ -491,7 +491,7 @@ Please continue with other queues. Good bye!
     # ##########################################
 
 Name of the queue created: test_devops_edited_houses
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_edited_houses
+URL: https://eu-west-1.queue.amazonaws.com/xxxxx/test_devops_edited_houses
 
                Do you want to send messages to test_devops_edited_houses (y/n)?n
 Please continue with other queues. Good bye!
@@ -501,7 +501,7 @@ Please continue with other queues. Good bye!
     # #################################################
 
 Name of the queue created: test_devops_edited_houses_errors
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_edited_houses_errors
+URL: https://eu-west-1.queue.amazonaws.com/xxxxx/test_devops_edited_houses_errors
 
                Do you want to send messages to test_devops_edited_houses_errors (y/n)?n
 Please continue with other queues. Good bye!
@@ -521,7 +521,7 @@ Please continue with other queues. Good bye!
     # ##################################################
 
 Name of the queue created: test_devops_removed_houses_errors
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_removed_houses_errors
+URL: https://eu-west-1.queue.amazonaws.com/xxxx/test_devops_removed_houses_errors
 
                Do you want to send messages to test_devops_removed_houses_errors (y/n)?n
 Please continue with other queues. Good bye!
@@ -531,7 +531,7 @@ Please continue with other queues. Good bye!
     # ###############################################
 
 Name of the queue created: test_devops_stats_phone_clicks
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_phone_clicks
+URL: https://eu-west-1.queue.amazonaws.com/xxxxx/test_devops_stats_phone_clicks
 
                Do you want to send messages to test_devops_stats_phone_clicks (y/n)?n
 Please continue with other queues. Good bye!
@@ -541,7 +541,7 @@ Please continue with other queues. Good bye!
     # ######################################################
 
 Name of the queue created: test_devops_stats_phone_clicks_errors
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_phone_clicks_errors
+URL: https://eu-west-1.queue.amazonaws.com/xxxx/test_devops_stats_phone_clicks_errors
 
                Do you want to send messages to test_devops_stats_phone_clicks_errors (y/n)?n
 Please continue with other queues. Good bye!
@@ -551,7 +551,7 @@ Please continue with other queues. Good bye!
     # ##################################################
 
 Name of the queue created: test_devops_stats_facebook_clicks
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_facebook_clicks
+URL: https://eu-west-1.queue.amazonaws.com/xxxx/test_devops_stats_facebook_clicks
 
                Do you want to send messages to test_devops_stats_facebook_clicks (y/n)?n
 Please continue with other queues. Good bye!
@@ -561,8 +561,36 @@ Please continue with other queues. Good bye!
     # #########################################################
 
 Name of the queue created: test_devops_stats_facebook_clicks_errors
-URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_stats_facebook_clicks_errors
+URL: https://eu-west-1.queue.amazonaws.com/xxxxx/test_devops_stats_facebook_clicks_errors
 
                Do you want to send messages to test_devops_stats_facebook_clicks_errors (y/n)?n
 We've finished. Good bye!
 ```
+
+- When queues are created, in amazon sqs service is possible to see them: Those are empty.
+
+
+![python script](https://cldup.com/mcoFLcJey3.png "python script")
+
+- When queues are created, we can also receive notifications to slack that he queues are ready. We receive them because in this case since the alerts are already created.
+
+NOTE:
+In order to take these screenshots for the queues process creation from the beginning, that I did was delete the queues from amazon portal
+and create the queues again from the python script. This is why in the alerts created in grafana we can see that progressively the alerts become to its `OK status` in this way:
+
+![python script](https://cldup.com/c4aZ9TRvyu.png "python script")
+
+- And as long the alerts returned to their `OK status` I can see I am receiving that `OK notification` to slack team 1 team 2 and team 3 channels
+
+
+![python script](https://cldup.com/ZBX8H-G6VT.png "python script")
+
+- I waited for 15/20 minutes (whereas I wrote these lines right now) and the result was this:
+All the defined alerts are in `OK STATUS` since the data were cleaned and there are not exceeded thresholds anymore.
+
+![python script](https://cldup.com/9-3d6V8X7F.png "python script")
+
+- So the notifications on slack were these:
+
+![python script](https://cldup.com/AJxxhnlyJD.png "python script")
+Since
