@@ -593,4 +593,27 @@ All the defined alerts are in `OK STATUS` since the data were cleaned and there 
 - So the notifications on slack were these:
 
 ![python script](https://cldup.com/AJxxhnlyJD.png "python script")
-Since
+
+- So `#team-1` channel has been notified that their respective interest queues (according to the requirements) are OK and ready to work
+
+![python script](https://cldup.com/Cz096lwh17.png "python script")
+
+- The same situation for `#team-2`
+
+![python script](https://cldup.com/QKTwc5Ry8q.png "python script")
+
+- And the same for `#team-3`
+
+![python script](https://cldup.com/u_FMH62BRd.png "python script")
+
+- If we see the time stamps of the arrival notifications we realized those arrived in closer moments.
+This is that happen when we create for the first time the queues and the alerts are enabled.
+
+- So if we have a look to the dashboards we can see those are ready to monitoring process, since those are empty right now
+    - Error queues dashboards
+
+      ![python script](https://cldup.com/Kgr5Kgh51a.gif "python script")
+
+    - Standard non error queues
+
+      ![python script](https://cldup.com/XXQuhB3bBT.gif "python script")
