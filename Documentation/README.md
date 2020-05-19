@@ -685,6 +685,7 @@ Sending 5 error object entry
     - At `03:38` the 10 messages were sent
     - At `03:40` the alert rule for that queue pass to `PENDING` status
     - At `03:42` the alert rule pass to `ALERTING` status, then the notifications to all teams were sent.
+So were 4 minutes spent to the arrival messages from grafana to slack
 
 ![python script](https://cldup.com/7tE21vp9cI.png "python script")
 
@@ -701,3 +702,76 @@ Sending 5 error object entry
     - Notification arrived to `#team-1`
 
       ![python script](https://cldup.com/sA2lmZqnE1.png "python script")
+
+- So if we see the `test_devops_makelaars_errors` alert rule defined, we can see is in alert state
+
+![python script](https://cldup.com/L81zoXQIph.png "python script")
+
+
+#### 6.1.2 Sending messages to `test_devops_new_houses_errors` queue
+
+- The same situation was for `test_devops_new_houses_errors` queue. 4 minutes were necessary for the messages arrive
+
+![python script](https://cldup.com/T0NA_vmngp.png "python script")
+
+- And these are the messages arrived to the three teams in slack:
+
+![python script](https://cldup.com/Wt8lxctjfi.png "python script")
+
+
+![python script](https://cldup.com/2JmCvmNTXp.png "python script")
+
+
+![python script](https://cldup.com/VjPEAxcS12.png "python script")
+
+
+-And `test_devops_new_houses_errors` is in alert
+
+
+![python script](https://cldup.com/XwRe1cFDA0.png "python script")
+
+#### 6.1.3 Sending messages to `test_devops_edited_houses_errors` queue
+
+- The same situation was for `test_devops_edited_houses_errors` queue. 4 minutes were necessary for the messages arrive
+
+![python script](https://cldup.com/PKvQC9hgCX.png "python script")
+
+- And these are the messages arrived to the three teams in slack:
+
+![python script](https://cldup.com/USOCBSHYsX.png "python script")
+
+
+![python script](https://cldup.com/rnprVsjk0h.png "python script")
+
+
+![python script](https://cldup.com/17z93vsfsq.png "python script")
+
+#### 6.1.4 Sending messages to the remaining queue errors
+
+
+ - So wehn we send messages to `test_devops_removed_houses_errors`, `test_devops_stats_phone_clicks_errors` and `test_devops_stats_facebook_clicks_errors`
+ the behavior is the same. It takes 4 minutes to receive the messages and trigger the alert  to slack
+
+
+
+ ![python script](https://cldup.com/PU6rb1Q8L9.png "python script")
+
+
+ [python script](https://cldup.com/WjPZn3IXnH.png "python script")
+
+
+ [python script](https://cldup.com/smeav1I-qo.png "python script")
+
+ ---
+ ### 6.2. Sending notifications when messages arrived to standard non error queues
+
+ >Team 1 and team 2 want to be notified if there are more than 10 messages in
+test_devops_new_houses and test_devops_makelaars queues.
+
+>Team 3 wants to be notified if there are more than 25 messages in standard non-error
+queues.
+
+Due to reasons time I didn't attacth screenshots for the arrival of messages for those queues,
+but I wanted to mention I am sending 100 messages to all the standard non-error queues [by calling this bash file](https://github.com/bgarcial/monitoring-queues/blob/master/sending-batch-messages.sh)
+
+These are [the messages sent](https://github.com/bgarcial/monitoring-queues/blob/master/send-houses-batch.json)
