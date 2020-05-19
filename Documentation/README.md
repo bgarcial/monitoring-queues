@@ -780,6 +780,6 @@ And team 1  team 2 and team 3 were notified
 
 
 
- [python script](https://cldup.com/YmZoVQbRCP.png "python script")
+ ![python script](https://cldup.com/YmZoVQbRCP.png "python script")
 
- [python script](https://cldup.com/xpPsEIg4F2.png "python script")
+ ![python script](https://cldup.com/xpPsEIg4F2.png "python script")
