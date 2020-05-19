@@ -574,7 +574,9 @@ We've finished. Good bye!
 
 - When queues are created, we can also receive notifications to slack that he queues are ready. We receive them because in this case since the alerts are already created.
 
-NOTE:
+---
+**NOTE**:
+
 In order to take these screenshots for the queues process creation from the beginning, that I did was delete the queues from amazon portal
 and create the queues again from the python script. This is why in the alerts created in grafana we can see that progressively the alerts become to its `OK status` in this way:
 
@@ -617,3 +619,85 @@ This is that happen when we create for the first time the queues and the alerts 
     - Standard non error queues
 
       ![python script](https://cldup.com/XXQuhB3bBT.gif "python script")
+
+---
+
+## 6. Sending messages to the queues from python script
+
+Let's take as a reference the general requirements of the problem when we want to send notifications:
+
+### 6.1. Sending notifications to all teams because 1 message on any `_error queues`
+
+>All teams want to be notified if there are any errors in the error SQS (_error queues).
+
+- So we want to send messages to every queue error.
+- Regarding to error queues I am sending 10 messages to those queues by calling [this bash script](https://github.com/bgarcial/monitoring-queues/blob/master/sending_error_msg_batch.sh)
+- The messages sent are [these two JSON documents](https://github.com/bgarcial/monitoring-queues/blob/master/send_errors.json)
+
+#### 6.1.2 Sending messages to `test_devops_makelaars_errors` queue
+
+- Executing the script
+
+```
+python queue-workflow.py
+
+               By creating those queues and sending them messages
+               you should use your default AWS account credentials and
+               might incur charges on your account.
+
+               Do you want to continue (y/n)?y
+Starting to create all queues and send messages to them.
+# #############################################
+    # Creating test_devops_makelaars_errors queue #
+    # #############################################
+
+Name of the queue created: test_devops_makelaars_errors
+URL: https://eu-west-1.queue.amazonaws.com/138290733079/test_devops_makelaars_errors
+
+               Do you want to send messages to test_devops_makelaars_errors (y/n)?y
+Sending messages to: test_devops_makelaars_errors
+Notification error message to the queue ...
+Sending 1 error object entry
+Sending 2 error object entry
+Sending 3 error object entry
+Sending 4 error object entry
+Sending 5 error object entry
+... messages sent to: https://eu-west-1.queue.amazonaws.com/xxxxxxxxx/test_devops_makelaars_errors
+{
+    "Successful": [
+        {
+            "Id": "ErrorReport-0001-2020-05-16T140731Z",
+            "MessageId": "4b12f987-fa13-421c-ba6a-4689976c7f3c",
+            "MD5OfMessageBody": "1e25407957e57f262e8ddb316e889047",
+            "MD5OfMessageAttributes": "dd5fc4cb16355e874d7077959ca80270"
+        },
+        {
+            "Id": "ErrorReport-0002-2020-05-16T140731Z",
+            "MessageId": "2e3b37ff-01d4-4ccc-9dde-4d5c99afa42c",
+            "MD5OfMessageBody": "c9b949adfce3644b7c619e3a2a060d27",
+            "MD5OfMessageAttributes": "4f4e733fb421e9299ebddffd4dc191d6"
+        }
+    ]
+}
+```
+
+- We can see in the chart  following events:
+    - At `03:38` the 10 messages were sent
+    - At `03:40` the alert rule for that queue pass to `PENDING` status
+    - At `03:42` the alert rule pass to `ALERTING` status, then the notifications to all teams were sent.
+
+![python script](https://cldup.com/7tE21vp9cI.png "python script")
+
+
+- These are the notifications for the teams
+    - Notification arrived to `#team-3`
+
+      ![python script](https://cldup.com/ki-IkEs_dy.png "python script")
+
+    - Notification arrived to `#team-2`
+
+      ![python script](https://cldup.com/gJpDNhkvCq.png "python script")
+
+    - Notification arrived to `#team-1`
+
+      ![python script](https://cldup.com/sA2lmZqnE1.png "python script")
