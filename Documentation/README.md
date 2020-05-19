@@ -775,3 +775,11 @@ Due to reasons time I didn't attacth screenshots for the arrival of messages for
 but I wanted to mention I am sending 100 messages to all the standard non-error queues [by calling this bash file](https://github.com/bgarcial/monitoring-queues/blob/master/sending-batch-messages.sh)
 
 These are [the messages sent](https://github.com/bgarcial/monitoring-queues/blob/master/send-houses-batch.json)
+
+And team 1  team 2 and team 3 were notified
+
+
+
+ [python script](https://cldup.com/YmZoVQbRCP.png "python script")
+
+ [python script](https://cldup.com/xpPsEIg4F2.png "python script")
