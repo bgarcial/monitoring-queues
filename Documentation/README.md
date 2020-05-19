@@ -749,7 +749,7 @@ So were 4 minutes spent to the arrival messages from grafana to slack
 #### 6.1.4 Sending messages to the remaining queue errors
 
 
- - So wehn we send messages to `test_devops_removed_houses_errors`, `test_devops_stats_phone_clicks_errors` and `test_devops_stats_facebook_clicks_errors`
+ - So when we send messages to `test_devops_removed_houses_errors`, `test_devops_stats_phone_clicks_errors` and `test_devops_stats_facebook_clicks_errors`
  the behavior is the same. It takes 4 minutes to receive the messages and trigger the alert  to slack
 
 
@@ -757,10 +757,10 @@ So were 4 minutes spent to the arrival messages from grafana to slack
  ![python script](https://cldup.com/PU6rb1Q8L9.png "python script")
 
 
- [python script](https://cldup.com/WjPZn3IXnH.png "python script")
+ ![python script](https://cldup.com/WjPZn3IXnH.png "python script")
 
 
- [python script](https://cldup.com/smeav1I-qo.png "python script")
+ ![python script](https://cldup.com/smeav1I-qo.png "python script")
 
  ---
  ### 6.2. Sending notifications when messages arrived to standard non error queues
