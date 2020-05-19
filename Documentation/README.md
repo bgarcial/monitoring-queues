@@ -771,7 +771,7 @@ test_devops_new_houses and test_devops_makelaars queues.
 >Team 3 wants to be notified if there are more than 25 messages in standard non-error
 queues.
 
-Due to reasons time I didn't attacth screenshots for the arrival of messages for those queues,
+Due to reasons time I didn't attacth screenshots for the arrival of messages for all those standard non-error queues with more than 25 messages,
 but I wanted to mention I am sending 100 messages to all the standard non-error queues [by calling this bash file](https://github.com/bgarcial/monitoring-queues/blob/master/sending-batch-messages.sh)
 
 These are [the messages sent](https://github.com/bgarcial/monitoring-queues/blob/master/send-houses-batch.json)
@@ -779,7 +779,9 @@ These are [the messages sent](https://github.com/bgarcial/monitoring-queues/blob
 And team 1  team 2 and team 3 were notified
 
 
+ ![python script](https://cldup.com/mfoJRkrKkI.png "python script")
+
+ ![python script](https://cldup.com/xpPsEIg4F2.png "python script")
 
  ![python script](https://cldup.com/YmZoVQbRCP.png "python script")
 
- ![python script](https://cldup.com/xpPsEIg4F2.png "python script")
